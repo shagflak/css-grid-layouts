@@ -4,3 +4,85 @@ body {
   margin: 30px;
   font-family: "Poppins";
 }
+
+.grid-container {
+  background-color: #eee;
+
+  width: 900px;
+  margin: 0 auto;
+
+  /*GRID PROPS START*/
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 100px 200px 300px;
+  gap: 10px;
+  /*
+  stretch it's the default behavior on grid items if we don't add justify-items the default goes to this value anyways.
+  Remember that justify-items works with the "X" axis horizontally
+  */
+  justify-items: stretch;
+  /*
+  align-items will work like justify but on t he Y axis
+   the default value for align-items using grid it's stretch by default
+  */
+  align-items: stretch;
+}
+
+.grid-container > div {
+  background-color: #ccc;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #777;
+
+  /*GRID SPECIFIC PROPS*/
+}
+
+.grid-container > div:nth-child(1) {
+  /*
+  You can define the starting position on the grid by using the following sintax
+  */
+  grid-column: 1 / span 2;
+} 
+
+.grid-container > div:nth-child(2) {
+  /*
+  WHEN YOU DON'TY SET A START POSITION WITH "1 / span 2" for example 
+  this code using just "span 3" will take the next available position in the grid
+  */
+  grid-column: span 3;
+}
+
+.grid-container > div:nth-child(3) {
+  grid-column: span 1;
+}
+
+.grid-container > div:nth-child(4) {
+  /*
+  We are telling grid here that this column 
+  starts at the column 2 and will spread just before the row 6 stars
+  */
+  grid-column: 2 / 6;
+  
+  /*
+  You can use these two properties two tell grid to align an item
+  individually
+  I added these two here for guidance but are not necessary to add with these values if you don't need them on the future.
+  */
+  justify-self: stretch;
+  align-self: stretch;
+
+  /* 
+  we manually set height here but the dominant height definition
+  with more priority it's defined in the grid container with the
+  grid-template-rows property
+  */
+  /* height: 200px; */
+}
+
+.grid-container > div:nth-child(5) {
+  grid-column: span 3;
+}
+
+.grid-container > div:nth-child(6) {
+  grid-column: span 3;
+}
